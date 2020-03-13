@@ -1,0 +1,10 @@
+{
+    "variants" :
+    {
+        "facing=down" : { "model" : "grimgar:candle_vertical" },
+        "facing=north" : { "model" : "grimgar:candle_horizontal" },
+        "facing=south" : { "model" : "grimgar:candle_horizontal" , "y" : 180 },
+        "facing=east" : { "model" : "grimgar:candle_horizontal" , "y" : 90 },
+        "facing=west" : { "model" : "grimgar:candle_horizontal" , "y" : 270 }
+    }
+}

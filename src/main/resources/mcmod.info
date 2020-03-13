@@ -1,0 +1,16 @@
+[
+{
+  "modid": "grimgar",
+  "name": "Grimgar",
+  "description": "",
+  "version": "0.1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["odd_bird"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
