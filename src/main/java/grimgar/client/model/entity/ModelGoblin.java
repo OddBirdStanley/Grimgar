@@ -10,14 +10,14 @@ import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelGoblin extends ModelBase {
-	private final ModelRenderer body;
-	private final ModelRenderer head;
-	private final ModelRenderer leftEar;
-	private final ModelRenderer rightEar;
-	private final ModelRenderer leftArm;
-	private final ModelRenderer rightArm;
-	private final ModelRenderer rightLeg;
-	private final ModelRenderer leftLeg;
+	private ModelRenderer body;
+	private ModelRenderer head;
+	private ModelRenderer leftEar;
+	private ModelRenderer rightEar;
+	private ModelRenderer leftArm;
+	private ModelRenderer rightArm;
+	private ModelRenderer rightLeg;
+	private ModelRenderer leftLeg;
 
 	public ModelGoblin() {
 		textureWidth = 64;

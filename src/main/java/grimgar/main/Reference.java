@@ -18,8 +18,6 @@ public final class Reference {
 	
 	public static final String COMMON_PROXY = "grimgar.proxy.CommonProxy";
 	public static final String CLIENT_PROXY = "grimgar.proxy.ClientProxy";
-
-	public static final String[] COLORED_PEBBLE_NAMES = new String[] {"Red","Yellow","Green","Blue","Grey"};
 	
 	public static final CreativeTabs GRIMGAR_BLOCKS = new TabGrimgarBlocks();
 	public static final CreativeTabs GRIMGAR_ITEMS = new TabGrimgarItems();
@@ -27,9 +25,27 @@ public final class Reference {
 	public static final CreativeTabs GRIMGAR_FOODS = new TabGrimgarFoods();
 	
 	public static final int DIM_ID_GRIMGAR = 340;
+	public static final int DIM_ID_DUSK = 341;
+	public static final int DIM_ID_DARRENGAR = 342;
+	public static final int DIM_ID_PARANO = 343;
 	
 	public static final int GUI_ID_GOBLIN_POUCH = 0;
 	
 	public static final int ENTITY_ID_GOBLIN = 0;
+	
+	public static final String[] RS_METAL_FRAGMENT = new String[] {"iron","copper","tin","bronze","nickel","gold","silver","platnium","alloy"};
+	public static final String[] US_METAL_FRAGMENT = new String[] {"Iron","Copper","Tin","Bronze","Nickel","Gold","Silver","Platnium","Alloy"};
+	public static final String[] RS_FANG = new String[] {"small","goblin","wolf"};
+	public static final String[] US_FANG = new String[] {"Small","Goblin","Wolf"};
+	public static final String[] RS_STEAMED_BUN = new String[] {"plain","custard","sweet_bean","meat"};
+	public static final String[] US_STEAMED_BUN = new String[] {"Plain","Custard","SweetBean","Meat"};
+	public static final String[] RS_KEBAB = new String[] {"veggies","pork","chicken","beef","lamb","venison","exotic"};
+	public static final String[] US_KEBAB = new String[] {"Veggies","Pork","Chicken","Beef","Lamb","Venison","Exotic"};
+	
+	public static final int[] HA_STEAMED_BUN = new int[] {3,4,4,6};
+	public static final int[] HA_KEBAB = new int[] {2,4,4,4,4,4,3};
+	
+	public static final float[] SA_STEAMED_BUN = new float[] {6.0F,6.0F,6.0F,6.0F};
+	public static final float[] SA_KEBAB = new float[] {5.0F,7.0F,7.0F,7.0F,7.0F,7.0F,3.0F};
 	
 }

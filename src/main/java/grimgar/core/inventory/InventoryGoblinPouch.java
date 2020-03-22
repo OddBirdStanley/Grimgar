@@ -12,7 +12,7 @@ public class InventoryGoblinPouch extends InventoryBasic{
 	private ItemStack stack;
 
 	public InventoryGoblinPouch(ItemStack stack) {
-		super("OOPS", true, 5);
+		super("Goblin Pouch", true, 5);
 		this.stack = stack;
 		fromNBT();
 	}

@@ -27,11 +27,7 @@ public class ItemWithSubtypesBase extends ItemBase implements IItemHasSubtypes{
 	
 	@Override
 	public String getTranslationKey(ItemStack stack) {
-		if(stack.getMetadata()<unlocalizedSuffixes.length && stack.getMetadata()>-1) {
-			return unlocalizedName+unlocalizedSuffixes[stack.getMetadata()];
-		}else {
-			return unlocalizedName;
-		}
+		return (stack.getMetadata()<unlocalizedSuffixes.length && stack.getMetadata()>-1) ? "item."+unlocalizedName+unlocalizedSuffixes[stack.getMetadata()] : "item."+unlocalizedName;
 	}
 	
 	@Override
@@ -61,19 +57,11 @@ public class ItemWithSubtypesBase extends ItemBase implements IItemHasSubtypes{
 	public static class Factory{
 		
 		public static ItemWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes) {
-			if(registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) {
-				return new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes);
-			}else {
-				return null;
-			}
+			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) ? new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes) : null;
 		}
 		
 		public static ItemWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int metadataStart) {
-			if(registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) {
-				return new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, metadataStart);
-			}else {
-				return null;
-			}
+			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) ? new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, metadataStart) : null;
 		}
 		
 	}

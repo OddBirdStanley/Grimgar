@@ -49,14 +49,14 @@ public class BlockCandle extends Block{
 	
 	public BlockCandle() {
 		super(Material.CIRCUITS);
-		this.setSoundType(SoundType.STONE);
-		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
-		this.setTranslationKey("candle");
-		this.setHardness(0.75F);
-		this.setResistance(0.0F);
-		this.setLightLevel(0.0F);
-		this.setCreativeTab(Reference.GRIMGAR_BLOCKS);
+		setSoundType(SoundType.STONE);
+		setTickRandomly(true);
+		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
+		setTranslationKey("candle");
+		setHardness(0.75F);
+		setResistance(0.0F);
+		setLightLevel(0.0F);
+		setCreativeTab(Reference.GRIMGAR_BLOCKS);
 	}
 	
 	@Override
@@ -126,7 +126,7 @@ public class BlockCandle extends Block{
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		if(facing==EnumFacing.UP) return this.getDefaultState();
-		return this.getDefaultState().withProperty(FACING, facing.getOpposite());
+		return getDefaultState().withProperty(FACING, facing.getOpposite());
 	}
 	
 	@Override
@@ -263,15 +263,15 @@ public class BlockCandle extends Block{
 	public IBlockState getStateFromMeta(int meta) {
 		switch(meta) {
 			case 0:
-				return this.getDefaultState().withProperty(FACING, EnumFacing.DOWN);
+				return getDefaultState().withProperty(FACING, EnumFacing.DOWN);
 			case 1:
-				return this.getDefaultState().withProperty(FACING, EnumFacing.NORTH);
+				return getDefaultState().withProperty(FACING, EnumFacing.NORTH);
 			case 2:
-				return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+				return getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
 			case 3:
-				return this.getDefaultState().withProperty(FACING, EnumFacing.EAST);
+				return getDefaultState().withProperty(FACING, EnumFacing.EAST);
 			case 4:
-				return this.getDefaultState().withProperty(FACING, EnumFacing.WEST);	
+				return getDefaultState().withProperty(FACING, EnumFacing.WEST);	
 			default:
 				throw new IllegalArgumentException("Cannot find the state.");
 		}

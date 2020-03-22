@@ -3,6 +3,7 @@ package grimgar.core.init;
 import grimgar.core.item.*;
 import grimgar.core.util.GrimgarModException;
 import grimgar.core.util.IItemHasSubtypes;
+import grimgar.main.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class InitItems{
 	
 	//Experimental
-	public static final Item LEVITATION_CORE = new grimgar.core.test.ItemLevitation("levitation_core", "levitationCore");
+	public static final Item LEVITATION_CORE = new grimgar.core.test.ItemLevitationBase("levitation_core", "levitationCore");
 	
 	//Basic items
 	public static final Item COPPER_COIN = new ItemBase("copper_coin", "copperCoin");
@@ -27,8 +28,7 @@ public class InitItems{
 	public static final Item PERFORATE_COIN = new ItemBase("perforate_coin", "perforateCoin");
 	
 	//Basic foods
-	public static final Item LEMONADE = new ItemFoodBase("lemonade", "lemonade", 2, 10.0F, true);
-	public static final Item DRIED_MEAT = new ItemFoodBase("dried_meat", "driedMeat", 4, 4.0F, false);
+	public static final Item DRIED_MEAT = new ItemFoodBase("dried_meat", "driedMeat", 4, 3.0F, false);
 	
 	//Basic melee weapons
 	public static final Item LONG_SWORD = new ItemWeaponMeleeBase("long_sword", "longSword", ItemSteelType.STEEL, 7.0D, 10.0F, 0.6F);
@@ -38,12 +38,12 @@ public class InitItems{
 	
 	//Items with subtypes
 	public static final Item COLORED_PEBBLE = null;
-	public static final Item METAL_FRAGMENT = null;
-	public static final Item FANG = null;
+	public static final Item METAL_FRAGMENT = ItemWithSubtypesBase.Factory.create("metal_fragment", "metalFragment", Reference.RS_METAL_FRAGMENT, Reference.US_METAL_FRAGMENT);
+	public static final Item FANG = ItemWithSubtypesBase.Factory.create("fang", "fang", Reference.RS_FANG, Reference.US_FANG);
 
 	//Foods with subtypes
-	public static final Item KEBAB = null;
-	public static final Item STEAMED_BUN = null;
+	public static final Item KEBAB = ItemFoodWithSubtypesBase.Factory.create("kebab", "kebab", Reference.RS_KEBAB, Reference.US_KEBAB, Reference.HA_KEBAB, Reference.SA_KEBAB, false);
+	public static final Item STEAMED_BUN = ItemFoodWithSubtypesBase.Factory.create("steamed_bun", "steamedBun", Reference.RS_STEAMED_BUN, Reference.US_STEAMED_BUN, Reference.HA_STEAMED_BUN, Reference.SA_STEAMED_BUN, false);
 	public static final Item SANDWICH = null;
 	
 	//General
@@ -58,7 +58,7 @@ public class InitItems{
 	public static final Item PRIEST_STAFF = new ItemPriestStaff();
 	public static final Item GOBLIN_POUCH = new ItemGoblinPouch();
 	
-	public static Item[] items = new Item[] {LEVITATION_CORE,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,LEMONADE,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH};
+	public static Item[] items = new Item[] {METAL_FRAGMENT,FANG,KEBAB,STEAMED_BUN,LEVITATION_CORE,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH};
 	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event){

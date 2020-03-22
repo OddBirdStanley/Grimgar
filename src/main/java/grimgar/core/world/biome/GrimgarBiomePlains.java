@@ -14,9 +14,6 @@ public class GrimgarBiomePlains extends GrimgarBiomeBase{
 				Block.getBlockFromName("grass").getDefaultState(),
 				Block.getBlockFromName("dirt").getDefaultState(),
 				"plains");
-
-		decorator = new BiomeDecorator();
-		decorator.treesPerChunk = 1;
 	}
 
 }

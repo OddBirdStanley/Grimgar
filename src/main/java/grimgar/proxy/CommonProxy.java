@@ -7,6 +7,7 @@ import grimgar.core.init.InitEntities;
 import grimgar.core.init.InitWorldGen;
 import grimgar.core.spell.SpellCure;
 import grimgar.main.Grimgar;
+import net.minecraft.world.Teleporter;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

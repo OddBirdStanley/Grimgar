@@ -26,5 +26,11 @@ public class GrimgarBiomeBase extends Biome{
 		spawnableWaterCreatureList.clear();
 		modSpawnableLists.clear();
 	}
+	
+	
+	@Override
+	public BiomeDecorator createBiomeDecorator() {
+		return new GrimgarDecorator();
+	}
 
 }

@@ -1,5 +1,6 @@
 package grimgar.client.renderer.sky;
 
+import java.nio.ByteBuffer;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
@@ -20,30 +21,31 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.IRenderHandler;
 
-public class GrimgarSkyRenderer extends IRenderHandler{
+public class DuskSkyRenderer extends IRenderHandler {
 	
-	private static final ResourceLocation MOON_PHASES_TEXTURES = new ResourceLocation("grimgar","textures/environment/moon_phases.png");
-    private static final ResourceLocation SUN_TEXTURES = new ResourceLocation("textures/environment/sun.png");
-    
-    private int glSkyList = -1;
+	private int glSkyList = -1;
     private int glSkyList2 = -1;
-    private int starGLCallList = -1;
-    private VertexBuffer skyVBO;
-    private VertexBuffer sky2VBO;
-    private VertexBuffer starVBO;
+	private OpenVertexBuffer skyVBO;
+    private OpenVertexBuffer sky2VBO;
     private boolean vboEnabled;
     private VertexFormat vertexBufferFormat;
-
-	public GrimgarSkyRenderer() {
+    
+    private Random rand = new Random(2604440L);
+	
+	public DuskSkyRenderer() {
 		vboEnabled = OpenGlHelper.useVbo();
 		vertexBufferFormat = new VertexFormat();
 		vertexBufferFormat.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.FLOAT, VertexFormatElement.EnumUsage.POSITION, 3));
 	}
 	
+	private BufferBuilder randColor(BufferBuilder bb) {
+		return bb.color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256), 255);
+	}
+
+	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc) {
 		generateSky();
 		generateSky2();
-		generateStars();
 		renderSky(partialTicks, world, mc);
 	}
 	
@@ -64,7 +66,7 @@ public class GrimgarSkyRenderer extends IRenderHandler{
 
         if (vboEnabled)
         {
-            skyVBO = new VertexBuffer(vertexBufferFormat);
+            skyVBO = new OpenVertexBuffer(vertexBufferFormat);
             renderSky(bufferbuilder, 16.0F, false);
             bufferbuilder.finishDrawing();
             bufferbuilder.reset();
@@ -97,7 +99,7 @@ public class GrimgarSkyRenderer extends IRenderHandler{
 
         if (vboEnabled)
         {
-            sky2VBO = new VertexBuffer(vertexBufferFormat);
+            sky2VBO = new OpenVertexBuffer(vertexBufferFormat);
             renderSky(bufferbuilder, -16.0F, true);
             bufferbuilder.finishDrawing();
             bufferbuilder.reset();
@@ -113,93 +115,7 @@ public class GrimgarSkyRenderer extends IRenderHandler{
         }
 	}
 	
-	private void generateStars() {
-		Tessellator tessellator = Tessellator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuffer();
-
-        if (starVBO != null)
-        {
-            starVBO.deleteGlBuffers();
-        }
-
-        if (starGLCallList >= 0)
-        {
-            GLAllocation.deleteDisplayLists(starGLCallList);
-            starGLCallList = -1;
-        }
-
-        if (vboEnabled)
-        {
-            starVBO = new VertexBuffer(vertexBufferFormat);
-            renderStars(bufferbuilder);
-            bufferbuilder.finishDrawing();
-            bufferbuilder.reset();
-            starVBO.bufferData(bufferbuilder.getByteBuffer());
-        }
-        else
-        {
-            starGLCallList = GLAllocation.generateDisplayLists(1);
-            GlStateManager.pushMatrix();
-            GlStateManager.glNewList(starGLCallList, 4864);
-            renderStars(bufferbuilder);
-            tessellator.draw();
-            GlStateManager.glEndList();
-            GlStateManager.popMatrix();
-        }
-	}
-
-	private void renderStars(BufferBuilder bufferBuilder) {
-		Random random = new Random(10842L);
-        bufferBuilder.begin(7, DefaultVertexFormats.POSITION);
-
-        for (int i = 0; i < 500; ++i)
-        {
-            double d0 = (double)(random.nextFloat() * 2.0F - 1.0F);
-            double d1 = (double)(random.nextFloat() * 2.0F - 1.0F);
-            double d2 = (double)(random.nextFloat() * 2.0F - 1.0F);
-            double d3 = (double)(0.15F + random.nextFloat() * 0.1F);
-            double d4 = d0 * d0 + d1 * d1 + d2 * d2;
-
-            if (d4 < 1.0D && d4 > 0.01D)
-            {
-                d4 = 1.0D / Math.sqrt(d4);
-                d0 = d0 * d4;
-                d1 = d1 * d4;
-                d2 = d2 * d4;
-                double d5 = d0 * 100.0D;
-                double d6 = d1 * 100.0D;
-                double d7 = d2 * 100.0D;
-                double d8 = Math.atan2(d0, d2);
-                double d9 = Math.sin(d8);
-                double d10 = Math.cos(d8);
-                double d11 = Math.atan2(Math.sqrt(d0 * d0 + d2 * d2), d1);
-                double d12 = Math.sin(d11);
-                double d13 = Math.cos(d11);
-                double d14 = random.nextDouble() * Math.PI * 2.0D;
-                double d15 = Math.sin(d14);
-                double d16 = Math.cos(d14);
-
-                for (int j = 0; j < 4; ++j)
-                {
-                    double d17 = 0.0D;
-                    double d18 = (double)((j & 2) - 1) * d3;
-                    double d19 = (double)((j + 1 & 2) - 1) * d3;
-                    double d20 = 0.0D;
-                    double d21 = d18 * d16 - d19 * d15;
-                    double d22 = d19 * d16 + d18 * d15;
-                    double d23 = d21 * d12 + 0.0D * d13;
-                    double d24 = 0.0D * d12 - d21 * d13;
-                    double d25 = d24 * d9 - d22 * d10;
-                    double d26 = d22 * d9 + d24 * d10;
-                    bufferBuilder.pos(d5 + d25, d6 + d23, d7 + d26).endVertex();
-                }
-            }
-        }
-	}
-
 	private void renderSky(BufferBuilder bufferBuilder, float posY, boolean reverseX) {
-		int i = 64;
-        int j = 6;
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION);
 
         for (int k = -384; k <= 384; k += 64)
@@ -214,7 +130,7 @@ public class GrimgarSkyRenderer extends IRenderHandler{
                     f1 = (float)k;
                     f = (float)(k + 64);
                 }
-
+                
                 bufferBuilder.pos((double)f, (double)posY, (double)l).endVertex();
                 bufferBuilder.pos((double)f1, (double)posY, (double)l).endVertex();
                 bufferBuilder.pos((double)f1, (double)posY, (double)(l + 64)).endVertex();
@@ -233,7 +149,6 @@ public class GrimgarSkyRenderer extends IRenderHandler{
         float f1 = (float)vec3d.y;
         float f2 = (float)vec3d.z;
 
-        GlStateManager.color(f, f1, f2);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         GlStateManager.depthMask(false);
@@ -245,7 +160,10 @@ public class GrimgarSkyRenderer extends IRenderHandler{
             skyVBO.bindBuffer();
             GlStateManager.glEnableClientState(32884);
             GlStateManager.glVertexPointer(3, 5126, 12, 0);
-            skyVBO.drawArrays(7);
+            for(int i = 0; i<skyVBO.count; i++) {
+            	GlStateManager.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+            	GlStateManager.glDrawArrays(7, i, i+1);
+            }
             skyVBO.unbindBuffer();
             GlStateManager.glDisableClientState(32884);
         }
@@ -289,7 +207,7 @@ public class GrimgarSkyRenderer extends IRenderHandler{
             GlStateManager.popMatrix();
             GlStateManager.shadeModel(7424);
         }
-
+        
         GlStateManager.enableTexture2D();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         GlStateManager.pushMatrix();
@@ -297,60 +215,16 @@ public class GrimgarSkyRenderer extends IRenderHandler{
         GlStateManager.color(1.0F, 1.0F, 1.0F, f16);
         GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
-        float f17 = 30.0F;
-        renderEngine.bindTexture(SUN_TEXTURES);
-        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos((double)(-f17), 100.0D, (double)(-f17)).tex(0.0D, 0.0D).endVertex();
-        bufferbuilder.pos((double)f17, 100.0D, (double)(-f17)).tex(1.0D, 0.0D).endVertex();
-        bufferbuilder.pos((double)f17, 100.0D, (double)f17).tex(1.0D, 1.0D).endVertex();
-        bufferbuilder.pos((double)(-f17), 100.0D, (double)f17).tex(0.0D, 1.0D).endVertex();
-        tessellator.draw();
-        f17 = 20.0F;
-        renderEngine.bindTexture(MOON_PHASES_TEXTURES);
-        int k1 = world.getMoonPhase();
-        int i2 = k1 % 4;
-        int k2 = k1 / 4 % 2;
-        float f22 = (float)(i2 + 0) / 4.0F;
-        float f23 = (float)(k2 + 0) / 2.0F;
-        float f24 = (float)(i2 + 1) / 4.0F;
-        float f14 = (float)(k2 + 1) / 2.0F;
-        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos((double)(-f17), -100.0D, (double)f17).tex((double)f24, (double)f14).endVertex();
-        bufferbuilder.pos((double)f17, -100.0D, (double)f17).tex((double)f22, (double)f14).endVertex();
-        bufferbuilder.pos((double)f17, -100.0D, (double)(-f17)).tex((double)f22, (double)f23).endVertex();
-        bufferbuilder.pos((double)(-f17), -100.0D, (double)(-f17)).tex((double)f24, (double)f23).endVertex();
-        tessellator.draw();
-        GlStateManager.disableTexture2D();
         float f15 = world.getStarBrightness(partialTicks) * f16;
-
-        if (f15 > 0.0F)
-        {
-            GlStateManager.color(f15, f15, f15, f15);
-
-            if (vboEnabled)
-            {
-                starVBO.bindBuffer();
-                GlStateManager.glEnableClientState(32884);
-                GlStateManager.glVertexPointer(3, 5126, 12, 0);
-                starVBO.drawArrays(7);
-                starVBO.unbindBuffer();
-                GlStateManager.glDisableClientState(32884);
-            }
-            else
-            {
-                GlStateManager.callList(starGLCallList);
-            }
-        }
-
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableBlend();
         GlStateManager.enableAlpha();
         GlStateManager.enableFog();
         GlStateManager.popMatrix();
         GlStateManager.disableTexture2D();
+        
         GlStateManager.color(0.0F, 0.0F, 0.0F);
         double d3 = mc.player.getPositionEyes(partialTicks).y - world.getHorizon();
-
         if (d3 < 0.0D)
         {
             GlStateManager.pushMatrix();
@@ -373,32 +247,27 @@ public class GrimgarSkyRenderer extends IRenderHandler{
             GlStateManager.popMatrix();
             double f19 = -((double)(d3 + world.getHorizon()));
             bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-            bufferbuilder.color(0, 255, 0, 255);
            
-            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
-            
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).endVertex();
-            
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, -1.0D).endVertex();
-            
-            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
-            
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
             
             tessellator.draw();
         }
@@ -419,5 +288,49 @@ public class GrimgarSkyRenderer extends IRenderHandler{
         GlStateManager.enableTexture2D();
         GlStateManager.depthMask(true);
 	}
+	
+	public static class OpenVertexBuffer {
+		public int glBufferId;
+		public final VertexFormat vertexFormat;
+		public int count;
 
+	    public OpenVertexBuffer(VertexFormat vertexFormat)
+	    {
+	        this.vertexFormat = vertexFormat;
+	        glBufferId = OpenGlHelper.glGenBuffers();
+	    }
+
+	    public void bindBuffer()
+	    {
+	        OpenGlHelper.glBindBuffer(OpenGlHelper.GL_ARRAY_BUFFER, glBufferId);
+	    }
+
+	    public void bufferData(ByteBuffer data)
+	    {
+	        bindBuffer();
+	        OpenGlHelper.glBufferData(OpenGlHelper.GL_ARRAY_BUFFER, data, 35044);
+	        unbindBuffer();
+	        this.count = data.limit() / this.vertexFormat.getSize();
+	    }
+
+	    public void drawArrays(int mode)
+	    {
+	        GlStateManager.glDrawArrays(mode, 0, this.count);
+	    }
+
+	    public void unbindBuffer()
+	    {
+	        OpenGlHelper.glBindBuffer(OpenGlHelper.GL_ARRAY_BUFFER, 0);
+	    }
+
+	    public void deleteGlBuffers()
+	    {
+	        if (this.glBufferId >= 0)
+	        {
+	            OpenGlHelper.glDeleteBuffers(glBufferId);
+	            glBufferId = -1;
+	        }
+	    }
+	}
+	
 }

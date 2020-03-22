@@ -1,28 +1,26 @@
 package grimgar.core.world;
 
+import grimgar.client.renderer.sky.DuskSkyRenderer;
 import grimgar.client.renderer.sky.GrimgarSkyRenderer;
 import grimgar.core.init.InitBiomes;
 import grimgar.main.Reference;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
-import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.client.IRenderHandler;
 
-public class WorldProviderGrimgar extends WorldProvider{
-
-	public WorldProviderGrimgar() {
+public class WorldProviderDusk extends WorldProvider {
+	
+	public WorldProviderDusk() {
 		
 	}
 	
 	@Override
 	protected void init() {
 		hasSkyLight = true;
-		setDimension(Reference.DIM_ID_GRIMGAR);
+		setDimension(Reference.DIM_ID_DUSK);
 	}
 	
 	@Override
@@ -37,12 +35,12 @@ public class WorldProviderGrimgar extends WorldProvider{
 
 	@Override
 	public DimensionType getDimensionType() {
-		return DimensionType.getById(Reference.DIM_ID_GRIMGAR);
+		return DimensionType.getById(Reference.DIM_ID_DUSK);
 	}
 	
 	@Override
 	public IRenderHandler getSkyRenderer() {
-		return new GrimgarSkyRenderer();
+		return new DuskSkyRenderer();
 	}
 	
 	@Override
@@ -80,4 +78,17 @@ public class WorldProviderGrimgar extends WorldProvider{
 		return 128.0D;
 	}
 	
+	@Override
+	public float calculateCelestialAngle(long worldTime, float partialTicks) {
+		return 0.24F;
+	}
+	
+	@Override
+	protected void generateLightBrightnessTable() {
+		super.generateLightBrightnessTable();
+		for(int i = 0; i<lightBrightnessTable.length; i++) {
+			lightBrightnessTable[i] *= 0.8F;
+		}
+	}
+
 }
