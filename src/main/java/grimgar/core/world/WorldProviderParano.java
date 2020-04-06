@@ -1,11 +1,8 @@
 package grimgar.core.world;
 
-import grimgar.client.renderer.sky.DarrengarSkyRenderer;
 import grimgar.client.renderer.sky.ParanoSkyRenderer;
 import grimgar.core.init.InitBiomes;
 import grimgar.main.Reference;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProvider;

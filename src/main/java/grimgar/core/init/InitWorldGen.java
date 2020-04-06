@@ -9,10 +9,6 @@ import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 
 public class InitWorldGen {
-
-	public InitWorldGen() {
-		
-	}
 	
 	public static void register() {
 		DimensionType.register("grimgar", "_grimgar", Reference.DIM_ID_GRIMGAR, WorldProviderGrimgar.class, false);

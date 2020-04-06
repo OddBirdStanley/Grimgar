@@ -1,7 +1,6 @@
 package grimgar.core.world.biome;
 
 import net.minecraft.block.Block;
-import net.minecraft.world.biome.BiomeDecorator;
 
 public class GrimgarBiomePlains extends GrimgarBiomeBase{
 

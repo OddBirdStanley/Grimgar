@@ -1,6 +1,7 @@
 package grimgar.core.init;
 
 import grimgar.core.block.BlockCandle;
+import grimgar.main.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -16,17 +17,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber
 public class InitBlocks {
 	
-	private static final String MOD_ID = grimgar.main.Reference.MOD_ID;
-	
 	public static final Block CANDLE = new BlockCandle().setRegistryName("candle");
 	public static final Block LIT_CANDLE = new BlockCandle().setRegistryName("lit_candle").setLightLevel(0.75F);
+	public static final Block MUD = new BlockCandle().setRegistryName("mud");
 	
-	public static final Item CANDLE_ITEM = new ItemBlock(CANDLE).setRegistryName(MOD_ID,"candle").setMaxStackSize(16);
+	public static final Item CANDLE_ITEM = new ItemBlock(CANDLE).setRegistryName(Reference.MOD_ID,"candle").setMaxStackSize(16);
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		
-		event.getRegistry().registerAll(CANDLE,LIT_CANDLE);
+		event.getRegistry().registerAll(CANDLE,LIT_CANDLE,MUD);
 		
 	}
 	

@@ -24,10 +24,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SpellCure implements IChatSpell{
+public class SpellHeal implements IChatSpell{
 	
-	public SpellCure() {
-		//For Manato...
+	public SpellHeal() {
 	}
 	
 	@Override
@@ -103,12 +102,12 @@ public class SpellCure implements IChatSpell{
 	
 	@Override
 	public String getSpell() {
-		return "CURE";
+		return "HEAL";
 	}
 	
 	@Override
 	public String getName() {
-		return "cure";
+		return "heal";
 	}
 
 	@Override
@@ -146,16 +145,6 @@ public class SpellCure implements IChatSpell{
 			world.spawnParticle(particleType, minVec.x-difX*i, minVec.y-difY*i, minVec.z-difZ*i, 0.0D, 0.0D, 0.0D);
 		}
 		return false;
-	}
-
-	@Override
-	public String getSuccessNotification() {
-		return "An entity is cured.";
-	}
-
-	@Override
-	public String getFaliureNotification() {
-		return "You failed to use the power of curing correctly.";
 	}
 	
 }

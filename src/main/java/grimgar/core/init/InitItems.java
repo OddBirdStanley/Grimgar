@@ -1,11 +1,22 @@
 package grimgar.core.init;
 
-import grimgar.core.item.*;
-import grimgar.core.util.GrimgarModException;
+import grimgar.core.item.ItemBase;
+import grimgar.core.item.ItemCanteen;
+import grimgar.core.item.ItemFeatherPen;
+import grimgar.core.item.ItemFoodBase;
+import grimgar.core.item.ItemFoodWithSubtypesBase;
+import grimgar.core.item.ItemGoblinPouch;
+import grimgar.core.item.ItemPriestStaff;
+import grimgar.core.item.ItemRecruitBadge;
+import grimgar.core.item.ItemSteelIngot;
+import grimgar.core.item.ItemSteelType;
+import grimgar.core.item.ItemWeaponMeleeBase;
+import grimgar.core.item.ItemWithSubtypesBase;
 import grimgar.core.util.IItemHasSubtypes;
 import grimgar.main.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -38,12 +49,12 @@ public class InitItems{
 	
 	//Items with subtypes
 	public static final Item COLORED_PEBBLE = null;
-	public static final Item METAL_FRAGMENT = ItemWithSubtypesBase.Factory.create("metal_fragment", "metalFragment", Reference.RS_METAL_FRAGMENT, Reference.US_METAL_FRAGMENT);
-	public static final Item FANG = ItemWithSubtypesBase.Factory.create("fang", "fang", Reference.RS_FANG, Reference.US_FANG);
+	public static final Item METAL_FRAGMENT = new ItemWithSubtypesBase("metal_fragment", "metalFragment", Reference.RS_METAL_FRAGMENT, Reference.US_METAL_FRAGMENT);
+	public static final Item FANG = new ItemWithSubtypesBase("fang", "fang", Reference.RS_FANG, Reference.US_FANG);
 
 	//Foods with subtypes
-	public static final Item KEBAB = ItemFoodWithSubtypesBase.Factory.create("kebab", "kebab", Reference.RS_KEBAB, Reference.US_KEBAB, Reference.HA_KEBAB, Reference.SA_KEBAB, false);
-	public static final Item STEAMED_BUN = ItemFoodWithSubtypesBase.Factory.create("steamed_bun", "steamedBun", Reference.RS_STEAMED_BUN, Reference.US_STEAMED_BUN, Reference.HA_STEAMED_BUN, Reference.SA_STEAMED_BUN, false);
+	public static final Item KEBAB = new ItemFoodWithSubtypesBase("kebab", "kebab", Reference.RS_KEBAB, Reference.US_KEBAB, Reference.HA_KEBAB, Reference.SA_KEBAB, false);
+	public static final Item STEAMED_BUN = new ItemFoodWithSubtypesBase("steamed_bun", "steamedBun", Reference.RS_STEAMED_BUN, Reference.US_STEAMED_BUN, Reference.HA_STEAMED_BUN, Reference.SA_STEAMED_BUN, false);
 	public static final Item SANDWICH = null;
 	
 	//General
@@ -57,8 +68,9 @@ public class InitItems{
 	public static final Item STEEL_SWORD = new ItemSteelType.ItemSteelSword();
 	public static final Item PRIEST_STAFF = new ItemPriestStaff();
 	public static final Item GOBLIN_POUCH = new ItemGoblinPouch();
+	public static final Item CANTEEN = new ItemCanteen();
 	
-	public static Item[] items = new Item[] {METAL_FRAGMENT,FANG,KEBAB,STEAMED_BUN,LEVITATION_CORE,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH};
+	public static Item[] items = new Item[] {METAL_FRAGMENT,FANG,KEBAB,STEAMED_BUN,LEVITATION_CORE,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH,CANTEEN};
 	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event){

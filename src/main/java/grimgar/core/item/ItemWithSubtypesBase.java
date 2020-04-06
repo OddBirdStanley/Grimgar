@@ -1,5 +1,6 @@
 package grimgar.core.item;
 
+import grimgar.core.util.GrimgarModException;
 import grimgar.core.util.IItemHasSubtypes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -11,12 +12,15 @@ public class ItemWithSubtypesBase extends ItemBase implements IItemHasSubtypes{
 	private String[] registrySuffixes, unlocalizedSuffixes;
 	private int metadataStart;
 	
-	private ItemWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes) {
+	public ItemWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes) {
 		this(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, 0);
 	}
 	
-	private ItemWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int metadataStart) {
+	public ItemWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int metadataStart) {
 		super(registryName, unlocalizedName);
+		if(!(registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1)) {
+			throw new GrimgarModException("Inconsistent arrays.");
+		}
 		setHasSubtypes(true);
 		this.registryName = registryName;
 		this.unlocalizedName = unlocalizedName;
@@ -52,18 +56,6 @@ public class ItemWithSubtypesBase extends ItemBase implements IItemHasSubtypes{
 	@Override
 	public int getMetadataStart() {
 		return metadataStart;
-	}
-	
-	public static class Factory{
-		
-		public static ItemWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes) {
-			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) ? new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes) : null;
-		}
-		
-		public static ItemWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int metadataStart) {
-			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1) ? new ItemWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, metadataStart) : null;
-		}
-		
 	}
 	
 }

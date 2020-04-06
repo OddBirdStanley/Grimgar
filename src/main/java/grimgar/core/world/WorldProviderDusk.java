@@ -1,7 +1,6 @@
 package grimgar.core.world;
 
 import grimgar.client.renderer.sky.DuskSkyRenderer;
-import grimgar.client.renderer.sky.GrimgarSkyRenderer;
 import grimgar.core.init.InitBiomes;
 import grimgar.main.Reference;
 import net.minecraft.world.DimensionType;

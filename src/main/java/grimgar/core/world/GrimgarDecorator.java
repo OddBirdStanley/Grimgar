@@ -1,4 +1,4 @@
-package grimgar.core.world.biome;
+package grimgar.core.world;
 
 import net.minecraft.world.biome.BiomeDecorator;
 

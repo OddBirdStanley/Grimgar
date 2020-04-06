@@ -3,13 +3,10 @@ package grimgar.core.world;
 import grimgar.client.renderer.sky.GrimgarSkyRenderer;
 import grimgar.core.init.InitBiomes;
 import grimgar.main.Reference;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
-import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.client.IRenderHandler;
 

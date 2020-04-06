@@ -1,6 +1,5 @@
 package grimgar.core.inventory;
 
-import grimgar.core.item.ItemGoblinPouch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;

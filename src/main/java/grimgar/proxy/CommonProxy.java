@@ -5,9 +5,8 @@ import grimgar.core.handler.GuiHandler;
 import grimgar.core.handler.NetworkHandler;
 import grimgar.core.init.InitEntities;
 import grimgar.core.init.InitWorldGen;
-import grimgar.core.spell.SpellCure;
+import grimgar.core.spell.SpellHeal;
 import grimgar.main.Grimgar;
-import net.minecraft.world.Teleporter;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -30,7 +29,7 @@ public class CommonProxy{
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		ChatSpellHandler.addSpell(new SpellCure());
+		ChatSpellHandler.addSpell(new SpellHeal());
 	}
 	
 	@EventHandler

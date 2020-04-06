@@ -6,6 +6,7 @@ import grimgar.client.handler.ChatSpellHandler;
 import grimgar.core.handler.NetworkHandler;
 import grimgar.core.util.IChatSpell;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -64,9 +65,9 @@ public class ChatSpellMessage implements IMessage{
 							return;
 						}
 						if(spell.performAction(world, player)) {
-							player.getServer().getPlayerList().sendMessage(new TextComponentString(spell.getSuccessNotification()));
+							player.getServer().getPlayerList().sendMessage(new TextComponentString(I18n.format(spell.getSuccessNotificationKey())));
 						}else {
-							player.sendMessage(new TextComponentString(spell.getFaliureNotification()));
+							player.sendMessage(new TextComponentString(I18n.format(spell.getFaliureNotificationKey())));
 						}
 						NetworkHandler.INSTANCE.sendToAll(new ChatSpellClientMessage(spell.getName()));
 					}

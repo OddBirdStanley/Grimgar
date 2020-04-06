@@ -1,11 +1,10 @@
 package grimgar.core.world.biome;
 
+import grimgar.core.world.GrimgarDecorator;
 import grimgar.main.Reference;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeManager.BiomeType;
 
 public class GrimgarBiomeBase extends Biome{
 	

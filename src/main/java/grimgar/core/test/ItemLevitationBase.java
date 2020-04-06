@@ -10,12 +10,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
 public class ItemLevitationBase extends Item {
-	
-	private static final String MOD_ID = Reference.MOD_ID;
 
 	public ItemLevitationBase(String registryName, String unlocalizedName) {
 		this.setTranslationKey(unlocalizedName);
-		this.setRegistryName(MOD_ID,registryName);
+		this.setRegistryName(Reference.MOD_ID,registryName);
 		this.setCreativeTab(Reference.GRIMGAR_ITEMS);
 	}
 	

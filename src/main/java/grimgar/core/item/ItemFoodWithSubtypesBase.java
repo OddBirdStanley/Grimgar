@@ -1,5 +1,6 @@
 package grimgar.core.item;
 
+import grimgar.core.util.GrimgarModException;
 import grimgar.core.util.IItemHasSubtypes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -13,12 +14,15 @@ public class ItemFoodWithSubtypesBase extends ItemFoodBase implements IItemHasSu
 	private float[] saturation;
 	private int metadataStart;
 	
-	private ItemFoodWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float[] saturation, boolean isSnack) {
+	public ItemFoodWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float[] saturation, boolean isSnack) {
 		this(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, amount, saturation, isSnack, 0);
 	}
 	
-	private ItemFoodWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float[] saturation, boolean isSnack, int metadataStart) {
+	public ItemFoodWithSubtypesBase(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float[] saturation, boolean isSnack, int metadataStart) {
 		super(registryName, unlocalizedName, amount[0], saturation[0], isSnack);
+		if(!(registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1 && registrySuffixes.length==amount.length && registrySuffixes.length==saturation.length)) {
+			throw new GrimgarModException("Inconsistent arrays.");
+		}
 		setHasSubtypes(true);
 		this.registryName = registryName;
 		this.unlocalizedName = unlocalizedName;
@@ -66,18 +70,6 @@ public class ItemFoodWithSubtypesBase extends ItemFoodBase implements IItemHasSu
 	@Override
 	public int getMetadataStart() {
 		return metadataStart;
-	}
-	
-	public static class Factory{
-		
-		public static ItemFoodWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float[] saturation, boolean isSnack) {
-			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1 && registrySuffixes.length==amount.length && registrySuffixes.length==saturation.length) ? new ItemFoodWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, amount, saturation, isSnack, 0) : null;
-		}
-		
-		public static ItemFoodWithSubtypesBase create(String registryName, String unlocalizedName, String[] registrySuffixes, String[] unlocalizedSuffixes, int[] amount, float saturation[], boolean isSnack, int metadataStart) {
-			return (registrySuffixes.length==unlocalizedSuffixes.length && registrySuffixes.length>1 && registrySuffixes.length==amount.length && registrySuffixes.length==saturation.length) ? new ItemFoodWithSubtypesBase(registryName, unlocalizedName, registrySuffixes, unlocalizedSuffixes, amount, saturation, isSnack, metadataStart) : null;
-		}
-		
 	}
 
 }

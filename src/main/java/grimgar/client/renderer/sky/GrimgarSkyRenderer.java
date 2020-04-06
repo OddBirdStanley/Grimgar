@@ -371,34 +371,34 @@ public class GrimgarSkyRenderer extends IRenderHandler{
             }
 
             GlStateManager.popMatrix();
+            GlStateManager.disableFog();
             double f19 = -((double)(d3 + world.getHorizon()));
             bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-            bufferbuilder.color(0, 255, 0, 255);
            
-            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
             
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
             
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, (double)f19, -1.0D).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
             
-            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, (double)f19, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
             
-            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).endVertex();
-            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, 1.0D).endVertex();
-            bufferbuilder.pos(1.0D, -1.0D, -1.0D).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            bufferbuilder.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
             
             tessellator.draw();
         }

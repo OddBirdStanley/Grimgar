@@ -1,11 +1,9 @@
 package grimgar.core.inventory;
 
 import grimgar.core.item.ItemGoblinPouch;
-import grimgar.core.inventory.SlotGoblinPouch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 

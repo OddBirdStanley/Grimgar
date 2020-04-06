@@ -3,9 +3,11 @@ package grimgar.client.handler;
 import java.util.HashMap;
 
 import grimgar.core.handler.NetworkHandler;
+import grimgar.core.util.GrimgarModException;
 import grimgar.core.util.IChatSpell;
 import grimgar.network.ChatSpellMessage;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -22,11 +24,11 @@ public class ChatSpellHandler {
 	
 	public static void addSpell(IChatSpell spell) {
 		if(SPELLS.containsKey(spell.getName())) {
-			throw new IllegalArgumentException("A spell with name '"+spell.getName()+"' is already added.");
+			throw new GrimgarModException("A spell with name '"+spell.getName()+"' is already added.");
 		}else {
 			for(IChatSpell each : SPELLS.values()) {
 				if(each.getSpell().equals(spell.getSpell())) {
-					throw new IllegalArgumentException("A spell '"+spell.getSpell()+"' is already added.");
+					throw new GrimgarModException("A spell '"+spell.getSpell()+"' is already added.");
 				}
 			}
 			SPELLS.put(spell.getName(), spell);
@@ -56,7 +58,7 @@ public class ChatSpellHandler {
 				}
 			}
 			if(!isSpell) {
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("This is not a spell."));
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("general.spellNonexistent")));
 			}
 			event.setCanceled(true);
 		}

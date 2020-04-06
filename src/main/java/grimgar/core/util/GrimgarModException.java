@@ -1,6 +1,6 @@
 package grimgar.core.util;
 
-public class GrimgarModException extends Exception{
+public class GrimgarModException extends RuntimeException{
 	
 	public GrimgarModException() {
 		super();
