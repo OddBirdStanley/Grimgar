@@ -10,7 +10,8 @@ public class ThirstProvider implements ICapabilitySerializable<NBTBase> {
 	
 	@CapabilityInject(IThirst.class)
 	public static final Capability<IThirst> THIRST_CAP = null;
-	public static final IThirst INSTANCE = THIRST_CAP.getDefaultInstance();
+	
+	public IThirst INSTANCE = THIRST_CAP.getDefaultInstance();
 	
 	public ThirstProvider() {
 		

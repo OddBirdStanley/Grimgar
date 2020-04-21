@@ -1,6 +1,9 @@
 package grimgar.proxy;
 
 import grimgar.core.init.InitEntities;
+import grimgar.core.init.InitFluids;
+import grimgar.core.init.InitTileEntities;
+import grimgar.core.test.TestRegistry;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -16,7 +19,10 @@ public class ClientProxy extends CommonProxy{
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
+		InitFluids.registerRenderers();
 		InitEntities.registerRenderers();
+		InitTileEntities.registerRenderers();
+		TestRegistry.registerRenderers();
 	}
 	
 	@Override

@@ -1,0 +1,8 @@
+misc.rubicsCubeModeSwitch0=Rubic's Cube's mode is switched to VALUE_A
+misc.rubicsCubeModeSwitch1=Rubic's Cube's mode is switched to VALUE_B
+misc.rubicsCubeModeSwitch2=Rubic's Cube's mode is switched to SWAP
+misc.rubicsCubeValueSwitchA=Rubic's Cube's Value A is incremented to 
+misc.rubicsCubeValueSwitchB=Rubic's Cube's Value B is incremented to 
+misc.rubicsCubeSwap=Rubic's Cube has swapped two of its values
+
+tile.rubicsCube.name=Rubic's Cube

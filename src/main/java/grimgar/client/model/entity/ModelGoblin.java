@@ -6,14 +6,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelGoblin extends ModelBase {
-	private ModelRenderer body;
-	private ModelRenderer head;
-	private ModelRenderer leftEar;
-	private ModelRenderer rightEar;
-	private ModelRenderer leftArm;
-	private ModelRenderer rightArm;
-	private ModelRenderer rightLeg;
-	private ModelRenderer leftLeg;
+	public ModelRenderer body;
+	public ModelRenderer head;
+	public ModelRenderer leftEar;
+	public ModelRenderer rightEar;
+	public ModelRenderer leftArm;
+	public ModelRenderer rightArm;
+	public ModelRenderer rightLeg;
+	public ModelRenderer leftLeg;
 
 	public ModelGoblin() {
 		textureWidth = 64;

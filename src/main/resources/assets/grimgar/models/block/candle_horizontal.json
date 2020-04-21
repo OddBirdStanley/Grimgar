@@ -37,7 +37,7 @@
     },
     "elements": [
         {
-            "name": "Main",
+            "name": "main",
             "from": [ 7, 2, 6 ], 
             "to": [ 10, 11, 9 ], 
             "faces": {
@@ -46,7 +46,7 @@
             }
         },
         {
-            "name": "WickLower",
+            "name": "wick_lower",
             "from": [ 8, 11, 7 ], 
             "to": [ 9, 14, 8 ], 
             "faces": {
@@ -58,7 +58,7 @@
             }
         },
         {
-            "name": "ConnectorClose",
+            "name": "connector_close",
             "from": [ 8, 5, 2 ], 
             "to": [ 9, 6, 5 ], 
             "faces": {
@@ -69,7 +69,7 @@
             }
         },
         {
-            "name": "ConnectorFar",
+            "name": "connector_far",
             "from": [ 8, 4, 1 ], 
             "to": [ 9, 6, 2 ], 
             "faces": {
@@ -81,7 +81,7 @@
             }
         },
         {
-            "name": "BaseLower",
+            "name": "base_lower",
             "from": [ 7, 3, 0 ], 
             "to": [ 10, 6, 1 ], 
             "faces": {
@@ -94,7 +94,7 @@
             }
         },
         {
-            "name": "BaseUpper",
+            "name": "base_upper",
             "from": [ 8, 6, 0 ], 
             "to": [ 9, 7, 1 ], 
             "faces": {
@@ -106,7 +106,7 @@
             }
         },
         {
-            "name": "MainNorth",
+            "name": "main_north",
             "from": [ 7, 2, 5 ], 
             "to": [ 10, 12, 6 ], 
             "faces": {
@@ -119,7 +119,7 @@
             }
         },
         {
-            "name": "MainWest",
+            "name": "main_west",
             "from": [ 6, 2, 6 ], 
             "to": [ 7, 12, 9 ], 
             "faces": {
@@ -132,7 +132,7 @@
             }
         },
         {
-            "name": "MainSouth",
+            "name": "main_south",
             "from": [ 7, 2, 9 ], 
             "to": [ 10, 12, 10 ], 
             "faces": {
@@ -145,7 +145,7 @@
             }
         },
         {
-            "name": "MainEast",
+            "name": "main_east",
             "from": [ 10, 2, 6 ], 
             "to": [ 11, 12, 9 ], 
             "faces": {
@@ -158,7 +158,7 @@
             }
         },
         {
-            "name": "ConnectorSmall",
+            "name": "connector_small",
             "from": [ 8, 6, 4 ], 
             "to": [ 9, 7, 5 ], 
             "faces": {
@@ -169,7 +169,7 @@
             }
         },
         {
-            "name": "WickUpper",
+            "name": "wick_upper",
             "from": [ 9, 14, 7 ], 
             "to": [ 10, 15, 8 ], 
             "faces": {

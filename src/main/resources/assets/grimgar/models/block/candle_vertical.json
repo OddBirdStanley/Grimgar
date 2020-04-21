@@ -37,7 +37,7 @@
     },
     "elements": [
         {
-            "name": "Main",
+            "name": "main",
             "from": [ 7, 3, 6 ], 
             "to": [ 10, 12, 9 ], 
             "faces": {
@@ -46,7 +46,7 @@
             }
         },
         {
-            "name": "WickLower",
+            "name": "wick_lower",
             "from": [ 8, 12, 7 ], 
             "to": [ 9, 15, 8 ], 
             "faces": {
@@ -58,7 +58,7 @@
             }
         },
         {
-            "name": "ConnectorClose",
+            "name": "connector_close",
             "from": [ 8, 1, 7 ], 
             "to": [ 9, 3, 8 ], 
             "faces": {
@@ -69,7 +69,7 @@
             }
         },
         {
-            "name": "BaseLower",
+            "name": "base_lower",
             "from": [ 7, 0, 6 ], 
             "to": [ 10, 1, 9 ], 
             "faces": {
@@ -82,7 +82,7 @@
             }
         },
         {
-            "name": "BaseMarginNorth",
+            "name": "base_margin_north",
             "from": [ 8, 0, 5 ], 
             "to": [ 9, 1, 6 ], 
             "faces": {
@@ -94,7 +94,7 @@
             }
         },
         {
-            "name": "MainNorth",
+            "name": "main_north",
             "from": [ 7, 3, 5 ], 
             "to": [ 10, 13, 6 ], 
             "faces": {
@@ -107,7 +107,7 @@
             }
         },
         {
-            "name": "MainWest",
+            "name": "main_west",
             "from": [ 6, 3, 6 ], 
             "to": [ 7, 13, 9 ], 
             "faces": {
@@ -120,7 +120,7 @@
             }
         },
         {
-            "name": "MainSouth",
+            "name": "main_south",
             "from": [ 7, 3, 9 ], 
             "to": [ 10, 13, 10 ], 
             "faces": {
@@ -133,7 +133,7 @@
             }
         },
         {
-            "name": "MainEast",
+            "name": "main_east",
             "from": [ 10, 3, 6 ], 
             "to": [ 11, 13, 9 ], 
             "faces": {
@@ -146,7 +146,7 @@
             }
         },
         {
-            "name": "WickUpper",
+            "name": "wick_upper",
             "from": [ 9, 15, 7 ], 
             "to": [ 10, 16, 8 ], 
             "faces": {
@@ -159,7 +159,7 @@
             }
         },
         {
-            "name": "BaseMarginWest",
+            "name": "base_margin_west",
             "from": [ 6, 0, 7 ], 
             "to": [ 7, 1, 8 ], 
             "faces": {
@@ -171,7 +171,7 @@
             }
         },
         {
-            "name": "BaseMarginSouth",
+            "name": "base_margin_south",
             "from": [ 8, 0, 9 ], 
             "to": [ 9, 1, 10 ], 
             "faces": {
@@ -183,7 +183,7 @@
             }
         },
         {
-            "name": "BaseMarginEast",
+            "name": "base_margin_east",
             "from": [ 10, 0, 7 ], 
             "to": [ 11, 1, 8 ], 
             "faces": {

@@ -58,7 +58,7 @@ public class ChatSpellHandler {
 				}
 			}
 			if(!isSpell) {
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("general.spellNonexistent")));
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("spell.spellNonexistent")));
 			}
 			event.setCanceled(true);
 		}

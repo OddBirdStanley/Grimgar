@@ -34,11 +34,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCandle extends Block{
 	
-	private static final AxisAlignedBB BOUNDING_BOX_DOWN = new AxisAlignedBB(0.375, 0, 0.312, 0.688, 1, 0.625);
-	private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.375, 0.125, 0, 0.688, 0.938, 0.625);
-	private static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(0.312, 0.125, 0.375, 0.625, 0.938, 1);
-	private static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(0, 0.125, 0.312, 0.625, 0.938, 0.625);
-	private static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.375, 0.125, 0.375, 1, 0.938, 0.688);
+	public static final AxisAlignedBB BOUNDING_BOX_DOWN = new AxisAlignedBB(0.375, 0, 0.312, 0.688, 1, 0.625);
+	public static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(0.375, 0.125, 0, 0.688, 0.938, 0.625);
+	public static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(0.312, 0.125, 0.375, 0.625, 0.938, 1);
+	public static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(0, 0.125, 0.312, 0.625, 0.938, 0.625);
+	public static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.375, 0.125, 0.375, 1, 0.938, 0.688);
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", new Predicate<EnumFacing>() {
 		@Override
@@ -214,7 +214,7 @@ public class BlockCandle extends Block{
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
 

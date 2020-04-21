@@ -16,7 +16,6 @@ import grimgar.core.util.IItemHasSubtypes;
 import grimgar.main.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,9 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber
 public class InitItems{
-	
-	//Experimental
-	public static final Item LEVITATION_CORE = new grimgar.core.test.ItemLevitationBase("levitation_core", "levitationCore");
 	
 	//Basic items
 	public static final Item COPPER_COIN = new ItemBase("copper_coin", "copperCoin");
@@ -70,7 +66,7 @@ public class InitItems{
 	public static final Item GOBLIN_POUCH = new ItemGoblinPouch();
 	public static final Item CANTEEN = new ItemCanteen();
 	
-	public static Item[] items = new Item[] {METAL_FRAGMENT,FANG,KEBAB,STEAMED_BUN,LEVITATION_CORE,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH,CANTEEN};
+	public static Item[] items = new Item[] {METAL_FRAGMENT,FANG,KEBAB,STEAMED_BUN,COPPER_COIN,SILVER_COIN,GOLD_COIN,SKEWER,PERFORATE_COIN,DRIED_MEAT,LONG_SWORD,MACHETE,DAGGER,SPEAR,RECRUIT_BADGE,FEATHER_PEN,STEEL_INGOT,STEEL_AXE,STEEL_HOE,STEEL_PICKAXE,STEEL_SHOVEL,STEEL_SWORD,PRIEST_STAFF,GOBLIN_POUCH,CANTEEN};
 	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event){

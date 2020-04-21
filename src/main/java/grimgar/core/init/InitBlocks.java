@@ -1,6 +1,7 @@
 package grimgar.core.init;
 
 import grimgar.core.block.BlockCandle;
+import grimgar.core.block.BlockWoodenMug;
 import grimgar.main.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -17,23 +18,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber
 public class InitBlocks {
 	
-	public static final Block CANDLE = new BlockCandle().setRegistryName("candle");
-	public static final Block LIT_CANDLE = new BlockCandle().setRegistryName("lit_candle").setLightLevel(0.75F);
-	public static final Block MUD = new BlockCandle().setRegistryName("mud");
+	public static final Block CANDLE = new BlockCandle().setRegistryName(Reference.MOD_ID,"candle");
+	public static final Block LIT_CANDLE = new BlockCandle().setRegistryName(Reference.MOD_ID,"lit_candle").setLightLevel(0.75F);
+	public static final Block MUD = new BlockCandle().setRegistryName(Reference.MOD_ID,"mud");
 	
 	public static final Item CANDLE_ITEM = new ItemBlock(CANDLE).setRegistryName(Reference.MOD_ID,"candle").setMaxStackSize(16);
+	public static final Item MUD_ITEM = new ItemBlock(MUD).setRegistryName(Reference.MOD_ID,"mud").setMaxStackSize(64);
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		
-		event.getRegistry().registerAll(CANDLE,LIT_CANDLE,MUD);
+		event.getRegistry().registerAll(CANDLE,LIT_CANDLE);
 		
 	}
 	
 	@SubscribeEvent
 	public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
 
-		event.getRegistry().register(CANDLE_ITEM);
+		event.getRegistry().registerAll(CANDLE_ITEM);
+		
 		
 	}
 	
